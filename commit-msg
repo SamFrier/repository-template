@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+import sys, re
+
+regexp = r'JIRA-\d+' # placeholder, update later
+
+commit_msg_file = sys.argv[1]
+with open(commit_msg_file) as file:
+  message = file.read()
+  correct = re.match(regexp, message)
+  if not correct:
+    print "Commit rejected: please include a Jira issue key."
+    sys.exit(1)
+
