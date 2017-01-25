@@ -2,7 +2,7 @@
 
 import sys, re
 
-regexp = r'JIRA-\d+' # placeholder, update later
+regexp = r'[PROJECT_KEY]-\d+'
 
 commit_msg_file = sys.argv[1]
 with open(commit_msg_file) as file:
