@@ -10,11 +10,11 @@ else
   project_key=$1
 fi
 
-echo "Substituting project key..."
-sed -i 's/\[PROJECT_KEY\]/'$project_key'/g' commit-msg
 echo "Copying Git hooks..."
 cp prepare-commit-msg .git/hooks/
 cp commit-msg .git/hooks/
+echo "Substituting project key..."
+sed -i 's/\[PROJECT_KEY\]/'$project_key'/g' .git/hooks/commit-msg
 echo "All done!"
 
 exit 0
