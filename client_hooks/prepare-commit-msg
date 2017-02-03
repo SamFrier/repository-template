@@ -7,3 +7,4 @@ with open(commit_msg_file, 'r+') as file:
   content = file.read()
   file.seek(0,0)
   file.write("\n# Note: please include the relevant Jira ticket number in your commit message!%s" % content)
+

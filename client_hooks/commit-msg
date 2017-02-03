@@ -2,7 +2,7 @@
 
 import sys, re
 
-regexp = r'[PROJECT_KEY]-[0-9]+(\W+|$)'
+regexp = r'[PROJECT_KEY]-\d+ (.*) #\w+' # e.g. JIRA-1234 #comment ...
 merge = r'Merge '
 
 commit_msg_file = sys.argv[1]
@@ -14,3 +14,4 @@ with open(commit_msg_file) as file:
     sys.exit(1)
   print "Commit approved."
   sys.exit(0)
+

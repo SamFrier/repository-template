@@ -24,7 +24,7 @@ The contents of these files can then be updated as appropriate.
 
 #### In the remote repository
 
-(TODO)
+(probably impossible in GitHub)
 
 #### In your local repository
 

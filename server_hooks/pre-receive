@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+
+import sys, subprocess, re
+
+regexp = r'[PROJECT_KEY]-\d+ (.*) #\w+'
+merge = r'Merge '
+
+line = sys.stdin.read()
+old_rev, new_rev, ref_name = line.split(' ')
+if new_rev == "0000000000000000000000000000000000000000":
+  # If deleting branch, don't do any checks
+  print "Deleting branch..."
+  sys.exit(0)
+if old_rev == "0000000000000000000000000000000000000000":
+  # If this is a new branch, check commits as far back as head of parent(?)
+  old_rev = ""
+  (output, error) = subprocess.Popen("git rev-parse --all", stdout=subprocess.PIPE, shell=True).communicate()
+  refs = output.split('\n')
+  refs.pop()
+  for ref in refs:
+    old_rev ++ ("^" + ref + " ")
+else:
+  old_rev = "^" + old_rev
+
+cmd = "git log --format=%s " + new_rev = " " + old_rev
+get_commits = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+(output, error) = get_commits.communicate()
+commits_list = output.split('\n')
+commits_list.pop() # Remove blank line at end
+if len(commits_list) < 1: # Occurs if empty new branch is pushed
+  print "Pushing new branch..."
+  sys.exit(0)
+
+for commit in commits_list:
+  print "Checking commit message:"
+  print "- " + commit
+  correct_format = re.search (regexp, commit) or re.match(merge, commit)
+  if not correct_format:
+    print "Commit rejected: please include a Jira ticket number!"
+    if len(commits_list == 1)L
+      print "(Use 'git commit --amend' to change the commit message)"
+    else:
+      print "(Use 'git rebase -i HEAD~%s' and fix the offending commit message)" % len(commits_list)
+    print "Aborting push operation."
+    sys.exit(1)
+  else:
+    print "Commit approved."
+print "Approved: all commit messages are valid."
+sys.exit(0)
+
