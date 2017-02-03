@@ -5,7 +5,16 @@ Example of a template for other repositories to follow.
 
 ### 1) Copy documentation files
 
-(TODO)
+Ensure that the new repository contains the following files from this repository:
+
+* README.md.template (as README.md)
+* LICENSE
+* FAQ.md
+* CONTRIBUTING.md
+* ISSUE_TEMPLATE.md
+* PULL_REQUEST_TEMPLATE.md
+
+The contents of these files can then be updated as appropriate.
 
 ### Configure Jira service
 
