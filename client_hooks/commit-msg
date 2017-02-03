@@ -2,7 +2,8 @@
 
 import sys, re
 
-regexp = r'[PROJECT_KEY]-\d+'
+regexp = r'[PROJECT_KEY]-[0-9]+(\W+|$)'
+merge = r'Merge '
 
 commit_msg_file = sys.argv[1]
 with open(commit_msg_file) as file:
@@ -11,4 +12,5 @@ with open(commit_msg_file) as file:
   if not correct:
     print "Commit rejected: please include a Jira ticket number!"
     sys.exit(1)
-
+  print "Commit approved."
+  sys.exit(0)
