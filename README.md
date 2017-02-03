@@ -1,13 +1,23 @@
 # repository-template
-Example of a template for other repositories to follow
+Example of a template for other repositories to follow.
 
-## Initial setup
+## Setting up a new repository
 
-### In the central repository
+### 1) Copy documentation files
 
 (TODO)
 
-### On your local computer
+### Configure Jira service
+
+(TODO)
+
+### Set up Git hooks
+
+#### In the remote repository
+
+(TODO)
+
+#### In your local repository
 
 After cloning this repository, run the following command:
 
@@ -18,3 +28,4 @@ After cloning this repository, run the following command:
 where `<PROJECT KEY>` is the Jira project key (see above). This enforces that **all commit messages must contain a Jira issue key from this project** (e.g. `<PROJECT KEY>-1234`).
 
 The net result of this is that each commit will be added as a comment to the relevant issue in Jira.
+
